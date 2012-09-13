@@ -253,6 +253,8 @@ Since we have a relationship between our products and our user we can show the o
 
 Check your logs again, did the SQL change? Are there any new statements, why?
 
+New statements that the User table was loaded.  The new statements added require the use of the User table.
+
 
 #### Homework:
 
