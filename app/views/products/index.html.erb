@@ -1,33 +1,10 @@
-<% first_product = Product.first %>
+<% lots_of_products = Product.includes(:user).all %>
 
-<p>Product name: "<%= first_product.name %>", cost: $<%=first_product.price %>, Owner: <%= first_product.user.name %></p>
-
-<p>Number of products: <%= Product.count %></p>
-
-<b>List of all products</b>
 <ul>
-  <% product_list = Product.all %>
-  <% product_list.each do |pl| %>
-    <li><%=pl.name %>
+  <% lots_of_products.each do |product| %>
+    <li>
+      Product Name: "<%= product.name %>"" costs $<%= product.price %>
+      Sold by <%= product.user.name %>
+    </li>
   <% end %>
 </ul>
-
-
-<!-- List all books owned by John-->
-<% name = 'Lacey Kutch' %>
-<b>List of books owned by <%= name %></b>
-<ul>
-  <% User.where(:name => name).each do |u| %>
-      <% Product.where(:user_id => u.id).each do |p| %>
-        <li>User Name: <%= u.name %>, Book owned: <%=p.name %>
-      <% end %>
-  <% end%>
-</ul>
-
-
-
-
-<h2> I AMA View </h2>
-<p>
-  Find me in <%= Rails.root.join("app", "views", "products", __FILE__ ) %>
-</p>
